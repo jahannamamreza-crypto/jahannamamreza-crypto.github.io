@@ -12,7 +12,6 @@
     --ink:#3F342A;      /* warm brown text */
     --muted:#7A6A5D;
     --border:#E7DDD4;
-    --btn:#F7F0EA;      /* requested button color */
   }
   html,body{height:100%}
   body{
@@ -32,16 +31,8 @@
   }
   h1{font-size:24px;margin:0 0 8px;font-weight:800;letter-spacing:.2px}
   p.desc{margin:8px 0 16px;color:var(--muted);line-height:1.9}
-  .btn{
-    display:block; width:100%; max-width:100%;
-    box-sizing:border-box;
-    text-align:center; text-decoration:none;
-    background:var(--btn); color:var(--ink);
-    border:1px solid var(--border);
-    font-weight:800; padding:12px 14px; border-radius:12px; margin:10px 0;
-    box-shadow:0 4px 10px rgba(63,52,42,.06);
-  }
   .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
+  @media (max-width:520px){ .row{ grid-template-columns:1fr; } }
   .opt{
     display:block; text-align:center; text-decoration:none;
     color:var(--ink); background:#fff; border:1px solid var(--border);
@@ -57,9 +48,6 @@
       <h1>مسیریابی</h1>
       <p class="desc">برای مسیریابی، نرم‌افزار مورد نظر را انتخاب کنید.</p>
 
-      <!-- پیشنهاد بر اساس دستگاه -->
-      <a id="primary" class="btn" href="#" rel="noopener">باز کردن مسیر</a>
-
       <div class="row">
         <a id="nshn" class="opt" target="_blank" rel="noopener">نشان</a>
         <a id="gmaps" class="opt" target="_blank" rel="noopener">Google Maps</a>
@@ -71,25 +59,15 @@
   </div>
 
 <script>
+  // URLs
   const urlNeshan = "https://nshn.ir/_bveftexOcAY";
   const urlGMaps = "https://qrco.de/bgElj4";
   const urlWaze  = "https://www.waze.com/livemap?ll=35.680363,51.381088&navigate=yes";
 
+  // Set anchors
   document.getElementById('nshn').href = urlNeshan;
   document.getElementById('gmaps').href = urlGMaps;
   document.getElementById('waze').href  = urlWaze;
-
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const isAndroid = /Android/i.test(ua);
-  const primary = document.getElementById('primary');
-  if (isAndroid){
-    primary.href = urlGMaps; primary.textContent = "باز کردن در Google Maps";
-  } else if (isIOS){
-    primary.href = urlGMaps; primary.textContent = "باز کردن در Google Maps";
-  } else {
-    primary.href = urlGMaps; primary.textContent = "باز کردن در Google Maps (وب)";
-  }
 </script>
 </body>
 </html>
